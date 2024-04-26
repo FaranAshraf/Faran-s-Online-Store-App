@@ -3,7 +3,7 @@ pantsList() {
     {
       'name': 'Cotton Chino',
       'model': '100',
-      'price': 4999,
+      'price': 499,
       'image':
           'https://d2z0lqci37nukm.cloudfront.net/media/catalog/product/cache/59d1d247a0855e7654a8594881fa0c03/w/a/warrior-cargo-pants-1_h4lonfdlqrv6mxei.jpg',
       'quantity': 1
@@ -19,7 +19,7 @@ pantsList() {
     {
       'name': 'Jeans',
       'model': '32',
-      'price': 5199,
+      'price': 599,
       'image':
           'https://m.media-amazon.com/images/I/71NE8DcDW7L._AC_UY1000_.jpg',
       'quantity': 1

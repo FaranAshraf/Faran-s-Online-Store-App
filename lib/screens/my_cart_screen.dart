@@ -3,7 +3,9 @@ import 'package:fos/Data/my_cart_list.dart';
 import 'package:fos/utils/my_app_colors.dart';
 
 class MyCartScreen extends StatefulWidget {
-  const MyCartScreen({super.key});
+  const MyCartScreen({
+    super.key,
+  });
 
   @override
   State<MyCartScreen> createState() => _MyCartScreenState();
@@ -45,9 +47,9 @@ class _MyCartScreenState extends State<MyCartScreen> {
                         const Spacer(),
                         IconButton(
                           onPressed: () {
-                            setState(() {
-                              MyCartList.cartList.removeAt(index);
-                            });
+                            MyCartList.cartList.removeAt(index);
+
+                            setState(() {});
                           },
                           icon: const Icon(Icons.delete),
                         ),
@@ -57,14 +59,13 @@ class _MyCartScreenState extends State<MyCartScreen> {
                       children: [
                         TextButton(
                           onPressed: () {
-                            setState(() {
-                              if (counter > 1) {
-                                counter--;
-                              } else {
-                                MyCartList.cartList.removeAt(index);
-                              }
-                              product['quantity'] = counter;
-                            });
+                            if (counter > 1) {
+                              counter--;
+                            } else {
+                              MyCartList.cartList.removeAt(index);
+                            }
+                            product['quantity'] = counter;
+                            setState(() {});
                           },
                           child: const Text('-'),
                         ),

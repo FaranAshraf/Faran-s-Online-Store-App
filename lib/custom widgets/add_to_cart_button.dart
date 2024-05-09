@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:fos/Data/my_cart_list.dart';
+
 import 'package:fos/utils/my_app_colors.dart';
 
 class AddToCartButton extends StatefulWidget {
   final Map<String, dynamic> product;
 
-  const AddToCartButton({Key? key, required this.product}) : super(key: key);
+  const AddToCartButton({
+    Key? key,
+    required this.product,
+  }) : super(key: key);
   @override
   State<AddToCartButton> createState() => _AddToCartButtonState();
 }
@@ -26,10 +30,9 @@ class _AddToCartButtonState extends State<AddToCartButton> {
     return ElevatedButton(
       onPressed: !isPressed
           ? () {
-              setState(() {
-                isPressed = true;
-                MyCartList.addProduct(widget.product);
-              });
+              isPressed = true;
+              MyCartList.addProduct(widget.product);
+              setState(() {});
             }
           : () {},
       style: ButtonStyle(

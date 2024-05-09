@@ -3,7 +3,7 @@ import 'package:fos/custom%20widgets/add_to_cart_button.dart';
 import 'package:fos/custom%20widgets/favorite_button.dart';
 import 'package:fos/utils/my_app_colors.dart';
 
-class ProductScreen extends StatelessWidget {
+class ProductScreen extends StatefulWidget {
   final Map<String, dynamic> product;
 
   const ProductScreen({
@@ -11,6 +11,11 @@ class ProductScreen extends StatelessWidget {
     required this.product,
   }) : super(key: key);
 
+  @override
+  State<ProductScreen> createState() => _ProductScreenState();
+}
+
+class _ProductScreenState extends State<ProductScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,17 +29,21 @@ class ProductScreen extends StatelessWidget {
               itemBuilder: ((context, index) {
                 return Column(
                   children: [
-                    Image.network(product['image'] ?? ''),
+                    Image.network(widget.product['image'] ?? ''),
                     ListTile(
-                      title: Text(product['name'] ?? ''),
-                      subtitle: Text("PRICE : ${product['price'].toString()}"),
+                      title: Text(widget.product['name'] ?? ''),
+                      subtitle:
+                          Text("PRICE : ${widget.product['price'].toString()}"),
                       trailing: FavoriteButton(
-                        product: product,
+                        isUnFavorite: () {
+                          setState(() {});
+                        },
+                        product: widget.product,
                       ),
                     ),
                     Container(
                       margin: const EdgeInsets.all(8),
-                      child: Text("MODEL : ${product['model'] ?? ''}"),
+                      child: Text("MODEL : ${widget.product['model'] ?? ''}"),
                     ),
                     const Padding(padding: EdgeInsets.only(bottom: 30)),
                     Container(
@@ -51,7 +60,9 @@ class ProductScreen extends StatelessWidget {
           ),
           Container(
             margin: const EdgeInsets.only(bottom: 10),
-            child: AddToCartButton(product: product),
+            child: AddToCartButton(
+              product: widget.product,
+            ),
           ),
         ],
       ),

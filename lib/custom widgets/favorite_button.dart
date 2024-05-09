@@ -4,9 +4,11 @@ import 'package:fos/Data/favorite_list.dart';
 import 'package:fos/screens/favorites_screen.dart';
 
 class FavoriteButton extends StatefulWidget {
+  final VoidCallback? isUnFavorite;
   final Map<String, dynamic> product;
 
-  const FavoriteButton({Key? key, required this.product}) : super(key: key);
+  const FavoriteButton({Key? key, required this.product, this.isUnFavorite})
+      : super(key: key);
 
   @override
   State<FavoriteButton> createState() => _FavoriteButtonState();
@@ -21,13 +23,16 @@ class _FavoriteButtonState extends State<FavoriteButton> {
       onLongPress: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => const FavoritesScreen()),
+          MaterialPageRoute(
+              builder: (context) => FavoritesScreen(
+                    isUnFavorite: widget.isUnFavorite,
+                  )),
         );
       },
       onTap: () {
-        setState(() {
-          isPressed = !isPressed;
+        isPressed = !isPressed;
 
+        setState(() {
           isPressed
               ? FavoriteList.addProduct(widget.product)
               : FavoriteList.removeProduct(widget.product);

@@ -3,7 +3,8 @@ import 'package:fos/Data/favorite_list.dart';
 import 'package:fos/utils/my_app_colors.dart';
 
 class FavoritesScreen extends StatefulWidget {
-  const FavoritesScreen({Key? key}) : super(key: key);
+  final VoidCallback? isUnFavorite;
+  const FavoritesScreen({Key? key, this.isUnFavorite}) : super(key: key);
 
   @override
   State<FavoritesScreen> createState() => _FavoritesScreenState();
@@ -35,9 +36,9 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
             subtitle: Text(product['price'].toString()),
             trailing: IconButton(
                 onPressed: () {
-                  setState(() {
-                    FavoriteList.favoritesList.removeAt(index);
-                  });
+                  FavoriteList.removeProduct(product);
+                  widget.isUnFavorite?.call();
+                  setState(() {});
                 },
                 icon: const Icon(Icons.delete)),
           );

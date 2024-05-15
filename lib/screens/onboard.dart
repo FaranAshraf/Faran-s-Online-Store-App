@@ -38,9 +38,24 @@ class _OnBoardState extends State<OnBoard> {
                 ),
                 onPressed: () {
                   Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const LoginPage()));
+                    context,
+                    PageRouteBuilder(
+                      transitionDuration: const Duration(
+                          milliseconds: 500), // Adjust the duration as needed
+                      pageBuilder: (_, __, ___) => const LoginPage(),
+                      transitionsBuilder: (_, animation, __, child) {
+                        return SlideTransition(
+                          position: Tween<Offset>(
+                            begin: const Offset(
+                                0.0, -1.0), // Start off-screen to the right
+                            end: Offset
+                                .zero, // Slide to the center of the screen
+                          ).animate(animation),
+                          child: child,
+                        );
+                      },
+                    ),
+                  );
                 },
                 child: const Text(
                   'Get Started',

@@ -32,8 +32,8 @@ class _ProductScreenState extends State<ProductScreen> {
                     Image.network(widget.product['image'] ?? ''),
                     ListTile(
                       title: Text(widget.product['name'] ?? ''),
-                      subtitle:
-                          Text("PRICE : ${widget.product['price'].toString()}"),
+                      subtitle: Text(
+                          "PRICE : ${widget.product['price'].toString()}/-"),
                       trailing: FavoriteButton(
                         isUnFavorite: () {
                           setState(() {});
@@ -41,18 +41,58 @@ class _ProductScreenState extends State<ProductScreen> {
                         product: widget.product,
                       ),
                     ),
-                    Container(
-                      margin: const EdgeInsets.all(8),
-                      child: Text("MODEL : ${widget.product['model'] ?? ''}"),
-                    ),
-                    const Padding(padding: EdgeInsets.only(bottom: 30)),
-                    Container(
-                      margin: const EdgeInsets.all(8),
-                      child: Text(
-                        '~Free Delivery! \n ~Two Years Warranty \n ~Limited Stocks',
-                        style: TextStyle(color: MyAppColors.primaryColor),
+                    Card(
+                      margin: const EdgeInsets.all(10),
+                      child: Column(
+                        children: [
+                          Row(
+                            children: [
+                              const Text('Model'),
+                              const Spacer(),
+                              Text(widget.product['model'] ?? ''),
+                            ],
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(bottom: 10),
+                          ),
+                          const Row(
+                            children: [
+                              Text('Category'),
+                              Spacer(),
+                              Text('Pants'),
+                            ],
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(bottom: 10),
+                          ),
+                          const Row(
+                            children: [
+                              Text('Size'),
+                              Spacer(),
+                              Text('S / M / L / XL'),
+                            ],
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(bottom: 10),
+                          ),
+                          const Row(
+                            children: [
+                              Text('Color'),
+                              Spacer(),
+                              Text('Off-White'),
+                            ],
+                          ),
+                        ],
                       ),
                     ),
+                    // const Padding(padding: EdgeInsets.only(bottom: 30)),
+                    // Container(
+                    //   margin: const EdgeInsets.all(8),
+                    //   child: Text(
+                    //     '~Free Delivery! \n ~Two Years Warranty \n ~Limited Stocks',
+                    //     style: TextStyle(color: MyAppColors.primaryColor),
+                    //   ),
+                    // ),
                   ],
                 );
               }),

@@ -121,8 +121,21 @@ class _LoginPageState extends State<LoginPage> {
                       onPressed: () {
                         Navigator.pushReplacement(
                           context,
-                          MaterialPageRoute(
-                              builder: (context) => const HomeView()),
+                          PageRouteBuilder(
+                              transitionDuration:
+                                  const Duration(milliseconds: 500),
+                              pageBuilder: (_, __, ___) => const HomeView(),
+                              transitionsBuilder: (_, animation, __, child) {
+                                return SlideTransition(
+                                  position: Tween<Offset>(
+                                    begin: const Offset(1.0,
+                                        0.0), // Start off-screen to the right
+                                    end: Offset
+                                        .zero, // Slide to the center of the screen
+                                  ).animate(animation),
+                                  child: child,
+                                );
+                              }),
                         );
                         setState(() {
                           ProfileData.addprofileMap({

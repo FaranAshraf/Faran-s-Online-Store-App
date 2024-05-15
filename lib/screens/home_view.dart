@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fos/custom%20widgets/containers_widget.dart';
+import 'package:fos/custom%20widgets/searchbar.dart';
 import 'package:fos/screens/favorites_screen.dart';
 import 'package:fos/screens/login.dart';
 import 'package:fos/screens/my_cart_screen.dart';
@@ -130,6 +131,7 @@ class _HomeViewState extends State<HomeView> {
       body: const SingleChildScrollView(
         child: Column(
           children: [
+            // SearchBarWidget(),
             ContainersRow(catagories: 'WATCHES'),
             ContainersRow(catagories: 'SHOES'),
             ContainersRow(catagories: 'SHIRTS'),
